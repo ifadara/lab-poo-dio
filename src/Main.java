@@ -1,6 +1,4 @@
-import br.com.dio.desafio.domain.Conteudo;
-import br.com.dio.desafio.domain.Curso;
-import br.com.dio.desafio.domain.Mentoria;
+import br.com.dio.desafio.domain.*;
 
 import java.time.LocalDate;
 
@@ -27,10 +25,43 @@ public class Main {
         mentoria.setDescricao("Descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
+//        System.out.println(curso1);
+//        System.out.println(curso2);
+//
+//        System.out.println(mentoria);
 
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devIcaro = new Dev();
+        devIcaro.setNome("Icaro");
+        devIcaro.inscreverBootcamp(bootcamp);
+        System.out.println("Conteudos Inscritos Icaro: " + devIcaro.getConteudosInscritos());
+        devIcaro.progredir();
+        devIcaro.progredir();
+        System.out.println(" - ");
+        System.out.println("Conteudos Inscritos Icaro: " + devIcaro.getConteudosInscritos());
+        System.out.println("Conteudos Concluidos Icaro: " + devIcaro.getConteudosConcluidos());
+        System.out.println("XP: " + devIcaro.calcularXpTotal());
+
+        System.out.println("--------------------------------------");
+
+        Dev devIsabella = new Dev();
+        devIsabella.inscreverBootcamp(bootcamp);
+        devIsabella.setNome("Isabella");
+        System.out.println("Conteudos Inscritos Isabella: " + devIsabella.getConteudosInscritos());
+        devIsabella.progredir();
+        devIsabella.progredir();
+        devIsabella.progredir();
+        System.out.println(" - ");
+        System.out.println("Conteudos Inscritos Isabella: " + devIsabella.getConteudosInscritos());
+        System.out.println("Conteudos Concluidos Isabella: " + devIsabella.getConteudosConcluidos());
+        System.out.println("XP: " + devIsabella.calcularXpTotal());
+
 
 
     }
